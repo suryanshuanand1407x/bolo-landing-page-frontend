@@ -2,7 +2,7 @@
 // import { createClient } from '@supabase/supabase-js';
 
 // API Base URL (Set this to your backend domain or localhost during development)
-const API_BASE_URL = "http://localhost:8000/api"; // Update this when deploying
+const API_BASE_URL = "https://railway.com/project/ee3721fe-202a-4ae5-8f7f-61b2f1680f2f/service/515911a0-03cf-4174-ad71-08d2d9d3e19b/settings?environmentId=46a74795-6e83-43cb-bcd9-86e4de78978f"; // Update this when deploying
 
 // ---------------------------
 // Waitlist API Function
