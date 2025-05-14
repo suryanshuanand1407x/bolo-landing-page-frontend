@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 36 85% 54%; /* saffron */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 36 85% 54%; /* saffron */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 36 85% 54%; /* saffron */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 36 85% 54%; /* saffron */
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    color: #333333; /* charcoal-500 */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Saffron & Charcoal colors */
+@layer utilities {
+  .bg-saffron-50 {
+    background-color: #FFF8E5;
+  }
+  .bg-saffron-100 {
+    background-color: #FFF1CC;
+  }
+  .bg-saffron-200 {
+    background-color: #FFE499;
+  }
+  .bg-saffron-300 {
+    background-color: #FFD766;
+  }
+  .bg-saffron-400 {
+    background-color: #FFC933;
+  }
+  .bg-saffron-500 {
+    background-color: #F4B223;
+  }
+  .bg-saffron-600 {
+    background-color: #D69E1F;
+  }
+  .text-saffron-500 {
+    color: #F4B223;
+  }
+  .text-saffron-600 {
+    color: #D69E1F;
+  }
+  .text-charcoal-300 {
+    color: #666666;
+  }
+  .text-charcoal-400 {
+    color: #4D4D4D;
+  }
+  .text-charcoal-500 {
+    color: #333333;
+  }
+  .border-saffron-200 {
+    border-color: #FFE499;
+  }
+  .border-saffron-500 {
+    border-color: #F4B223;
+  }
+  .bg-ivory-100 {
+    background-color: #FFFAF0;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
