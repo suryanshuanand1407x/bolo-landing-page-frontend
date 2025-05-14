@@ -9,14 +9,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
+  // Use relative paths for CSS/JS assets to avoid misplaced styling
+  base: './',
+
   // Serve from /client locally and on Vercel
   root: path.resolve(__dirname, "client"),
 
   plugins: [
     react(),
     runtimeErrorOverlay(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID
+    ...(process.env.NODE_ENV !== "production" && process.env.REPL_ID
       ? [
           // only load on Replit in dev
           await import("@replit/vite-plugin-cartographer").then((m) =>
