@@ -1,7 +1,7 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
-// FastAPI backend URL
-const API_BASE_URL = "http://0.0.0.0:8000";
+// Backend URL
+const API_BASE_URL = "https://bolo-landing-page-backend-production.up.railway.app";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
