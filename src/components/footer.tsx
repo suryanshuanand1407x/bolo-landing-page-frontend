@@ -3,8 +3,30 @@ import {
   Linkedin, 
   Instagram 
 } from "lucide-react";
+import { useState } from "react";
+import { addToWaitlist } from "@/lib/supabase";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [subscribeMessage, setSubscribeMessage] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setIsSubmitting(true);
+    try {
+      await addToWaitlist(email);
+      setEmail("");
+      setSubscribeMessage("Thanks for subscribing!");
+      setTimeout(() => setSubscribeMessage(""), 3000);
+    } catch (error: any) {
+      setSubscribeMessage(error.message || "Failed to subscribe. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <footer className="py-12 px-4 bg-gray-900 text-white relative overflow-hidden">
       {/* Background pattern */}
@@ -22,16 +44,26 @@ export default function Footer() {
               <p className="text-white text-opacity-90">Get the latest news and updates delivered to your inbox</p>
             </div>
             <div className="w-full md:w-auto">
-              <div className="flex flex-col sm:flex-row gap-3">
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
                 <input 
                   type="email" 
                   placeholder="Enter your email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-gray-800 min-w-[250px]"
+                  required
                 />
-                <button className="bg-gray-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors">
-                  Subscribe
+                <button 
+                  type="submit"
+                  disabled={isSubmitting} 
+                  className="bg-gray-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors disabled:opacity-70"
+                >
+                  {isSubmitting ? "Subscribing..." : "Subscribe"}
                 </button>
-              </div>
+              </form>
+              {subscribeMessage && (
+                <p className="text-white text-sm mt-2">{subscribeMessage}</p>
+              )}
             </div>
           </div>
         </div>
