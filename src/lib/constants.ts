@@ -48,6 +48,9 @@ export const features = [
   "Customized for small business use cases like appointments, orders, and inquiries"
 ];
 
+// API Base URL for backend calls
+export const API_BASE_URL = "https://bolo-landing-page-backend-production.up.railway.app";
+
 // Technology showcase cards
 export const techCards = [
   {
