@@ -2,7 +2,7 @@
 // import { createClient } from '@supabase/supabase-js';
 
 // API Base URL from environment variables with fallback
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://bolo-landing-page-backend-production.up.railway.app";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://bolo-landing-page-backend-production.up.railway.app/";
 // For Vercel deployment, set VITE_API_BASE_URL in the Vercel dashboard
 
 // ---------------------------

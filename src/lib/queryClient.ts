@@ -1,7 +1,7 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
 // Backend URL
-const API_BASE_URL = "https://bolo-landing-page-backend-production.up.railway.app";
+const API_BASE_URL = "https://bolo-landing-page-backend-production.up.railway.app/";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
@@ -15,9 +15,8 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  // Determine if we should use the FastAPI server or the Express server
-  const isApiRoute = url.startsWith("/api/");
-  const fullUrl = isApiRoute ? `${API_BASE_URL}${url}` : url;
+  // Use the Railway FastAPI server
+  const fullUrl = url.startsWith("http") ? url : `${API_BASE_URL}${url}`;
   
   const res = await fetch(fullUrl, {
     method,
@@ -37,9 +36,8 @@ export const getQueryFn: <T>(options: {
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
     const urlKey = queryKey[0] as string;
-    // Determine if we should use the FastAPI server or the Express server
-    const isApiRoute = urlKey.startsWith("/api/");
-    const fullUrl = isApiRoute ? `${API_BASE_URL}${urlKey}` : urlKey;
+    // Use the Railway FastAPI server
+  const fullUrl = urlKey.startsWith("http") ? urlKey : `${API_BASE_URL}${urlKey}`;
     
     const res = await fetch(fullUrl, {
       credentials: "include",
